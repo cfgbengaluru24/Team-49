@@ -8,11 +8,11 @@ import StudentDetails from "./src/pages/studentdetails/StudentDetails";
 
 const AppRoutes = () => {
     return (
-            <Routes>
-                <Route path="/" element={<Homepage />} />
-                <Route path="/volunteer" element={<Resource />} />
-                <Route path="/student" element={<StudentDetails />} />
-            </Routes>
+        <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/volunteer" element={<Resource />} />
+            <Route path="/student" element={<StudentDetails />} />
+        </Routes>
     );
 };
 
