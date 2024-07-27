@@ -25,6 +25,12 @@ const resourceSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Volunteer',
         required: true
+      },
+      status: {
+        type: String,
+        enum: ['pending', 'approved', 'rejected'],
+        default: 'pending',
+        required: true
       }
     }
   ]

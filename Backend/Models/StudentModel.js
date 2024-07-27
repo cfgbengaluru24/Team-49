@@ -1,52 +1,52 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 const studentSchema = new Schema({
   username: {
     type: String,
-    required: true,  // Ensures that username is provided
+    required: true
   },
   email: {
     type: String,
-    required: true,  // Ensures that email is provided
-    unique: true,    // Ensures that email is unique across all students
+    required: true,
+    unique: true
   },
   password: {
     type: String,
-    required: true,  // Ensures that password is provided
+    required: true
   },
   age: {
-    type: Number,    // Optional field for student's age
+    type: Number
   },
   class: {
     type: String,
-    required: true,  // Ensures that class is provided
+    required: true
   },
   preferedtime: {
     type: String,
-    enum: ['evening', 'day'],  // Limits the preferred time to 'evening' or 'day'
-    required: true,  // Ensures that preferred time is provided
+    enum: ['evening', 'day'],
+    required: true
   },
   languagePreference: {
-    type: [String],  // Array to store multiple language preferences
-    required: true,  // Ensures that language preferences are provided
+    type: [String],
+    required: true
   },
   learningMethodPreference: {
     flashcards: {
       type: Boolean,
-      default: false,  // Default value is false
+      default: false
     },
     worksheets: {
       type: Boolean,
-      default: false,  // Default value is false
+      default: false
     },
     ppt: {
       type: Boolean,
-      default: false,  // Default value is false
-    },
-  },
+      default: false
+    }
+  }
 }, {
-  timestamps: true,  // Automatically adds createdAt and updatedAt fields
+  timestamps: true
 });
 
 const Student = mongoose.model('Student', studentSchema);
