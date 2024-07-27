@@ -1,0 +1,27 @@
+#root {
+  text-align: center;
+}
+
+.icons {
+  width: 1.4rem
+}
+.smallcursor{
+  height:10px;
+  width:10px;
+  background:#3ab8fc;
+  border-radius:50%;
+  position: absolute;
+  z-index: 1;
+  display:none;
+}
+.largecursor{
+  height:40px;
+  width:40px;
+  border:2px solid #c2ff19;
+  border-radius:50%;
+  position: absolute;
+  z-index: 1;
+  display:none;
+  transition-duration:50ms;
+  transition-timing-function: ease-in;
+}

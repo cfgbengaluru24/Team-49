@@ -1,7 +1,14 @@
 .resource-container {
   display: flex;
-  height: 100vh;
-  margin-top: 50px;
+  min-height: 100vh;
+  /* margin-top: 50px; */
+}
+
+.res-cards {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
 }
 
 .sidebar {
@@ -37,6 +44,7 @@
   justify-content: flex-start; /* Align items to the start */
   align-items: flex-start; /* Align items to the top */
   flex-wrap: wrap; /* Allow wrapping to the next line */
+  flex-direction: column;
 }
 
 .card {

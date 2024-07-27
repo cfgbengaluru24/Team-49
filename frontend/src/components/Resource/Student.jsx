@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Resource.css";
+import "./student.css";
 
 const subjects = [
     {
@@ -73,7 +73,7 @@ const Resource = () => {
                         {subject.name}
                     </div>
                 ))}
-                <button>upload</button>
+                
             </div>
             <div className="content">
                 {selectedSubject ? (
