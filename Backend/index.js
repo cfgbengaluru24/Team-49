@@ -7,6 +7,7 @@ const studentRoutes = require('./Routes/StudentRoutes');
 const volunteerRoutes = require('./Routes/VolunteerRoutes');
 const resourceRoutes = require('./Routes/ResourceRoutes');
 const commonRoutes = require('./Routes/commonRoutes');
+const volunteerResourceRoutes = require('./Routes/VolunteerResourceRoutes');
 const app = express();
 const port = process.env.PORT || 3000; // Default to port 3000 if PORT is not set
 
@@ -25,6 +26,7 @@ app.use('/api/volunteers', volunteerRoutes);
 app.use('/api', commonRoutes);
 
 app.use('/api/resources', resourceRoutes);
+app.use('/api', volunteerResourceRoutes);
 
 // Other setup...
 

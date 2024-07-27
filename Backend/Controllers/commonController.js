@@ -28,7 +28,14 @@ const login = async (req, res) => {
 
     // Generate a token
     const token = jwt.sign({ email, role }, process.env.JWT_SECRET || 'your_jwt_secret', { expiresIn: '1h' });
-    res.json({ message: 'Login successful', token });
+
+    // Respond with token and user details
+    res.json({
+      message: 'Login successful',
+      token,
+      user: user.toObject(),
+
+    });
 
   } catch (error) {
     console.error(error);

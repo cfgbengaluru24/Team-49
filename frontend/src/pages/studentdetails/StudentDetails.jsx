@@ -4,8 +4,9 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Assessment from '../../components/assessment/Assessment';
-import Resource from '../../components/Resource/Resource';
 import StudentProgress from '../../components/studentprogress/StudentProgress';
+// import Student from '../../components/Resource/Student';
+import Resource from '../../components/Resource/Resource';
 
 
 

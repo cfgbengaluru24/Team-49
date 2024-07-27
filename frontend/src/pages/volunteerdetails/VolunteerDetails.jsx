@@ -4,8 +4,9 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import Resource from "../../components/Resource/Resource";
-import StudentDetails from "../studentdetails/StudentDetails";
+// import StudentDetails from "../studentdetails/StudentDetails";
 import VolunteerProgress from "../../components/volunteerprogress/VolunteerProgress";
+import VolunteerResource from "../../components/VolunteerResource/VolunteerResource"
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -52,7 +53,7 @@ export default function VolunteerDetails() {
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
-                <Resource />
+                <VolunteerResource />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
                 <VolunteerProgress />
