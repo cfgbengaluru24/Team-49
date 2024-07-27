@@ -7,6 +7,8 @@ import Assessment from '../../components/assessment/Assessment';
 import Resource from '../../components/Resource/Resource';
 import StudentProgress from '../../components/studentprogress/StudentProgress';
 
+
+
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -44,12 +46,12 @@ export default function StudentDetails() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', marginTop: "5rem" }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Resources" {...a11yProps(0)} />
           <Tab label="Assignments" {...a11yProps(1)} />
-          <Tab label="Progress" {...a11yProps(2)} />
+          <Tab label="Class History" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>

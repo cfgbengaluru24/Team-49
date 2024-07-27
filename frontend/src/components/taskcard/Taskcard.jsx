@@ -16,8 +16,11 @@ const bull = (
 
 export default function Taskcard({ type, heading, extra, link, isCompleted = false, marks = 12 }) {
     return (
-        <Card sx={{ width: "250px", alignSelf: "start" }}>
-            <CardContent>
+        <Card sx={{ width: "280px", alignSelf: "start" }}>
+            <CardContent sx = {{
+                display: 'flex',
+                flexDirection: 'column',
+            }}>
                 <Typography
                     sx={{
                         fontSize: 14,
@@ -28,11 +31,10 @@ export default function Taskcard({ type, heading, extra, link, isCompleted = fal
                     color="text.secondary"
                     gutterBottom
                 >
-                <Box sx={{display: 'flex', gap: "5px"}}>
+                    <Box sx={{ display: "flex", gap: "5px" }}>
                         {isCompleted ? <Done /> : <Pending />}
                         {type}
                     </Box>
-                    {isCompleted && <Typography sx={{color: "green"}}>{marks}%</Typography>}
                 </Typography>
                 <Typography sx={{ textAlign: "left" }} variant="h5">
                     {heading}
@@ -41,6 +43,7 @@ export default function Taskcard({ type, heading, extra, link, isCompleted = fal
                     {extra}
                 </Typography>
             </CardContent>
+            {isCompleted?<Typography sx={{ color: "green", width: "100%", textAlign: "left", paddingLeft: 2, fontWeight: "bold" }}>Score: {marks}%</Typography>:<Typography sx={{ color: "orange", width: "100%", textAlign: "left", paddingLeft: 2, fontWeight: "bold" }}>Test pending</Typography>}
             <CardActions>
                 <Button href={link} target="_blank" rel="noopener noreferrer" size="small">
                     Open Task

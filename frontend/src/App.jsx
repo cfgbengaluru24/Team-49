@@ -9,7 +9,7 @@ function App() {
         <>
             <BrowserRouter>
                 {/* <ResponsiveAppBar /> */}
-                {/* <Header /> */}
+                <Header />
                 <AppRoutes />
             </BrowserRouter>
         </>
