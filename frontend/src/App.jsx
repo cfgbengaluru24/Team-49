@@ -1,14 +1,12 @@
 
-import './App.css'
-import Navbar from './components/Navbar'
-import Resource from './components/Resource/Resource'
+import './App.css';
+import Resource from './components/Resource/Resource';
 function App() {
 
 
   return (
     <>
-      <Navbar/>
-      <Resource/>
+    <Resource></Resource>
     </>
   )
 }
