@@ -16,7 +16,7 @@ const bull = (
 
 export default function Taskcard({ type, heading, extra, link, isCompleted = false, marks = 12 }) {
     return (
-        <Card sx={{ minWidth: 275 }}>
+        <Card sx={{ width: "250px", alignSelf: "start" }}>
             <CardContent>
                 <Typography
                     sx={{
@@ -28,7 +28,7 @@ export default function Taskcard({ type, heading, extra, link, isCompleted = fal
                     color="text.secondary"
                     gutterBottom
                 >
-                    <Box sx={{display: 'flex', gap: "5px"}}>
+                <Box sx={{display: 'flex', gap: "5px"}}>
                         {isCompleted ? <Done /> : <Pending />}
                         {type}
                     </Box>
@@ -37,7 +37,7 @@ export default function Taskcard({ type, heading, extra, link, isCompleted = fal
                 <Typography sx={{ textAlign: "left" }} variant="h5">
                     {heading}
                 </Typography>
-                <Typography sx={{ textAlign: "left" }} variant="body2">
+                <Typography sx={{ textAlign: "left", textWrap: "wrap" }} variant="body2">
                     {extra}
                 </Typography>
             </CardContent>
