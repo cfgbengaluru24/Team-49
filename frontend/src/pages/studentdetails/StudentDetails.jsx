@@ -4,8 +4,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Assessment from '../../components/assessment/Assessment';
-import Resource from '../../components/Resource/Resource';
 import StudentProgress from '../../components/studentprogress/StudentProgress';
+import Student from '../../components/Resource/Student';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,7 +53,7 @@ export default function StudentDetails() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <Resource />
+        <Student />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <Assessment />

@@ -1,0 +1,116 @@
+import { useState } from "react";
+import "./student.css";
+
+const subjects = [
+    {
+        name: "Math",
+        chapters: [
+            {
+                name: "Chapter 1",
+                content: {
+                    pdf: "path/to/math_chapter1.pdf",
+                    video: "path/to/math_chapter1.mp4",
+                    ppt: "path/to/math_chapter1.ppt",
+                },
+            },
+            {
+                name: "Chapter 2",
+                content: {
+                    pdf: "path/to/math_chapter2.pdf",
+                    video: "path/to/math_chapter2.mp4",
+                    ppt: "path/to/math_chapter2.ppt",
+                },
+            },
+            {
+                name: "Chapter 3",
+                content: {
+                    pdf: "path/to/math_chapter3.pdf",
+                    video: "path/to/math_chapter3.mp4",
+                    ppt: "path/to/math_chapter3.ppt",
+                },
+            },
+        ],
+    },
+    {
+        name: "Science",
+        chapters: [
+            {
+                name: "Chapter 1",
+                content: {
+                    pdf: "path/to/science_chapter1.pdf",
+                    video: "path/to/science_chapter1.mp4",
+                    ppt: "path/to/science_chapter1.ppt",
+                },
+            },
+            {
+                name: "Chapter 2",
+                content: {
+                    pdf: "path/to/science_chapter2.pdf",
+                    video: "path/to/science_chapter2.mp4",
+                    ppt: "path/to/science_chapter2.ppt",
+                },
+            },
+            {
+                name: "Chapter 3",
+                content: {
+                    pdf: "path/to/science_chapter3.pdf",
+                    video: "path/to/science_chapter3.mp4",
+                    ppt: "path/to/science_chapter3.ppt",
+                },
+            },
+        ],
+    },
+];
+
+const Resource = () => {
+    const [selectedSubject, setSelectedSubject] = useState(subjects[0]); // Default to "Math"
+
+    return (
+        <div className="resource-container">
+            <div className="sidebar">
+                {subjects.map((subject, index) => (
+                    <div key={index} className="subject-item" onClick={() => setSelectedSubject(subject)}>
+                        {subject.name}
+                    </div>
+                ))}
+                
+            </div>
+            <div className="content">
+                {selectedSubject ? (
+                    <div className="resource-content">
+                        <h2>{selectedSubject.name}</h2>
+                        <div className="res-cards">
+                            {selectedSubject.chapters.map((chapter, index) => (
+                                <div key={index} className="card">
+                                    <h3>{chapter.name}</h3>
+                                    <div>
+                                        <h4>PDF</h4>
+                                        <a href={chapter.content.pdf} target="_blank" rel="noopener noreferrer">
+                                            {selectedSubject.name} {chapter.name} PDF
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <h4>Video</h4>
+                                        <a href={chapter.content.video} target="_blank" rel="noopener noreferrer">
+                                            {selectedSubject.name} {chapter.name} Video
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <h4>PPT</h4>
+                                        <a href={chapter.content.ppt} target="_blank" rel="noopener noreferrer">
+                                            {selectedSubject.name} {chapter.name} PPT
+                                        </a>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ) : (
+                    <h2>Select a subject to view the chapters</h2>
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default Resource;
