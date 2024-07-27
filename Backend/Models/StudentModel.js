@@ -1,56 +1,36 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const studentSchema = new Schema({
-  
-  username: {
-    type: String,
-    required: true,             
-  },
-  email: {
+// Define subject schema with resources and volunteer reference
+const subjectSchema = new Schema({
+  subjectName: {
     type: String,
     required: true,
-    unique: true,
-
+    unique: true
   },
-  password: {
-    type: String,
-    required: true
-  },
-  age: {
-    type: Number
-  },
-  class: {
-    type: String,
-    required: true
-  },
-  preferedtime: {
-    type: String,
-    enum: ['evening', 'day'],
-    required: true
-  },
-  languagePreference: {
-    type: [String],
-    required: true
-  },
-  learningMethodPreference: {
-    flashcards: {
-      type: Boolean,
-      default: false
+  resources: [{
+    type: {
+      type: String,
+      enum: ['PDF', 'Video', 'PPT'],
+      required: true
     },
-    worksheets: {
-      type: Boolean,
-      default: false
+    url: {
+      type: String,
+      required: true
     },
-    ppt: {
-      type: Boolean,
-      default: false
+    description: {
+      type: String
     }
+  }],
+  volunteerId: {
+    type: Schema.Types.ObjectId,
+    ref: 'Volunteer',
+    required: true
   }
 }, {
   timestamps: true
 });
 
-const Student = mongoose.model('Student', studentSchema);
+const Subject = mongoose.model('Subject', subjectSchema);
 
-module.exports = Student;
+module.exports = Subject;

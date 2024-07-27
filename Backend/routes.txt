@@ -1,0 +1,36 @@
+.
+//signup students
+http://localhost:3000/api/students/signup 
+
+
+//login students
+http://localhost:3000/api/students/login
+
+//signup volunteer
+http://localhost:3000/api/volunteers/signup
+
+
+//login volunteer
+http://localhost:3000/api/volunteers/login
+
+//add resources
+http://localhost:3000/api/resources
+
+
+//get all resources
+http://localhost:3000/api/resources
+
+//get resources by particular resource id
+http://localhost:3000/api/resources/:_id
+
+//get resource by particular subject name 
+http://localhost:3000/api/resources/subject/:subjectName
+
+//get resource by particular topic name 
+http://localhost:3000/api/resources/topic/:topic
+
+//update resource by particular resource id
+http://localhost:3000/api/resources/:_id
+
+//delete resource by particular id
+http://localhost:3000/api/resources/:_id
