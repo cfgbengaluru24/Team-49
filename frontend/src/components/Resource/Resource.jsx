@@ -180,12 +180,6 @@ const Resource = () => {
     return subjects;
   };
 
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    console.log('File selected:', file);
-    // Handle file upload logic here
-  };
-
   return (
     <div className="resource-container">
       <div className="sidebar">
@@ -196,19 +190,10 @@ const Resource = () => {
             onClick={() => setSelectedSubject(subject)}
           >
             {subject.name}
+            
           </div>
         ))}
-        <div className="upload-container">
-          <input 
-            type="file" 
-            id="file-upload" 
-            style={{ display: 'none' }} 
-            onChange={handleFileUpload} 
-          />
-          <label htmlFor="file-upload" className="upload-button">
-            Upload File
-          </label>
-        </div>
+        <button>upload</button>
       </div>
       <div className="content">
         {selectedSubject ? (
