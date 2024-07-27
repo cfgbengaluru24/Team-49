@@ -1,11 +1,12 @@
 
 import './App.css';
-import Resource from './components/Resource/Resource';
+//import Resource from './components/Resource/Resource';
+import VolunteerResource from './components/VolunteerResource/VolunteerResource';
 function App() {
 
   return (
     <>
-   <Resource></Resource>
+   <VolunteerResource></VolunteerResource>
     </>
   )
 }
