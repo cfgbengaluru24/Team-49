@@ -1,13 +1,19 @@
-import React from 'react'
-import "./App.css"
-import Assessment from './components/assessment/Assessment'
+import "./App.css";
 
-const App = () => {
-  return (
-    <div>
-      <Assessment />
-    </div>
-  )
+import Header from "./components/header/Header";
+import AppRoutes from "../Routes";
+import { BrowserRouter } from "react-router-dom";
+
+function App() {
+    return (
+        <>
+            <BrowserRouter>
+                {/* <ResponsiveAppBar /> */}
+                {/* <Header /> */}
+                <AppRoutes />
+            </BrowserRouter>
+        </>
+    );
 }
 
-export default App
+export default App;
