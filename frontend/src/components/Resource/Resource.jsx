@@ -1,80 +1,134 @@
 import { useState } from 'react';
 import './Resource.css';
 
-const resources = [
+const subjects = [
   {
     name: 'Math',
-    content: {
-      pdf: 'path/to/math.pdf',
-      video: 'path/to/math.mp4',
-      ppt: 'path/to/math.ppt'
-    }
+    chapters: [
+      {
+        name: 'Chapter 1',
+        content: {
+          pdf: 'path/to/math_chapter1.pdf',
+          video: 'path/to/math_chapter1.mp4',
+          ppt: 'path/to/math_chapter1.ppt'
+        }
+      },
+      {
+        name: 'Chapter 2',
+        content: {
+          pdf: 'path/to/math_chapter2.pdf',
+          video: 'path/to/math_chapter2.mp4',
+          ppt: 'path/to/math_chapter2.ppt'
+        }
+      },
+      {
+        name: 'Chapter 3',
+        content: {
+          pdf: 'path/to/math_chapter3.pdf',
+          video: 'path/to/math_chapter3.mp4',
+          ppt: 'path/to/math_chapter3.ppt'
+        }
+      }
+    ]
   },
   {
     name: 'Science',
-    content: {
-      pdf: 'path/to/science.pdf',
-      video: 'path/to/science.mp4',
-      ppt: 'path/to/science.ppt'
-    }
-  },
-  {
-    name: 'History',
-    content: {
-      pdf: 'path/to/history.pdf',
-      video: 'path/to/history.mp4',
-      ppt: 'path/to/history.ppt'
-    }
+    chapters: [
+      {
+        name: 'Chapter 1',
+        content: {
+          pdf: 'path/to/science_chapter1.pdf',
+          video: 'path/to/science_chapter1.mp4',
+          ppt: 'path/to/science_chapter1.ppt'
+        }
+      },
+      {
+        name: 'Chapter 2',
+        content: {
+          pdf: 'path/to/science_chapter2.pdf',
+          video: 'path/to/science_chapter2.mp4',
+          ppt: 'path/to/science_chapter2.ppt'
+        }
+      },
+      {
+        name: 'Chapter 3',
+        content: {
+          pdf: 'path/to/science_chapter3.pdf',
+          video: 'path/to/science_chapter3.mp4',
+          ppt: 'path/to/science_chapter3.ppt'
+        }
+      }
+    ]
   }
 ];
 
 const Resource = () => {
-  const [selectedResource, setSelectedResource] = useState(resources[0]); // Default to "Math"
+  const [selectedSubject, setSelectedSubject] = useState(subjects[0]); // Default to "Math"
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    console.log('File selected:', file);
+    // Handle file upload logic here
+  };
 
   return (
     <div className="resource-container">
       <div className="sidebar">
-        {resources.map((resource, index) => (
+        {subjects.map((subject, index) => (
           <div 
             key={index} 
-            className="resource-item" 
-            onClick={() => setSelectedResource(resource)}
+            className="subject-item" 
+            onClick={() => setSelectedSubject(subject)}
           >
-            {resource.name}
+            {subject.name}
           </div>
         ))}
+        <div className="upload-container">
+          <input 
+            type="file" 
+            id="file-upload" 
+            style={{ display: 'none' }} 
+            onChange={handleFileUpload} 
+          />
+          <label htmlFor="file-upload" className="upload-button">
+            Upload File
+          </label>
+        </div>
       </div>
       <div className="content">
-        {selectedResource ? (
+        {selectedSubject ? (
           <div className="resource-content">
-            <div className="card">
-              <h2>{selectedResource.name}</h2>
-              <div>
-                <h3>PDF</h3>
-                <a href={selectedResource.content.pdf} target="_blank" rel="noopener noreferrer">
-                  {selectedResource.name} PDF
-                </a>
+            <h2>{selectedSubject.name}</h2>
+            {selectedSubject.chapters.map((chapter, index) => (
+              <div key={index} className="card">
+                <h3>{chapter.name}</h3>
+                <div>
+                  <h4>PDF</h4>
+                  <a href={chapter.content.pdf} target="_blank" rel="noopener noreferrer">
+                    {selectedSubject.name} {chapter.name} PDF
+                  </a>
+                </div>
+                <div>
+                  <h4>Video</h4>
+                  <a href={chapter.content.video} target="_blank" rel="noopener noreferrer">
+                    {selectedSubject.name} {chapter.name} Video
+                  </a>
+                </div>
+                <div>
+                  <h4>PPT</h4>
+                  <a href={chapter.content.ppt} target="_blank" rel="noopener noreferrer">
+                    {selectedSubject.name} {chapter.name} PPT
+                  </a>
+                </div>
               </div>
-              <div>
-                <h3>Video</h3>
-                <a href={selectedResource.content.video} target="_blank" rel="noopener noreferrer">
-                  {selectedResource.name} Video
-                </a>
-              </div>
-              <div>
-                <h3>PPT</h3>
-                <a href={selectedResource.content.ppt} target="_blank" rel="noopener noreferrer">
-                  {selectedResource.name} PPT
-                </a>
-              </div>
-            </div>
+            ))}
           </div>
         ) : (
-          <h2>Select a resource to view the content</h2>
+          <h2>Select a subject to view the chapters</h2>
         )}
       </div>
     </div>
   );
-}
+};
 
 export default Resource;
