@@ -18,7 +18,7 @@ import "./Header.css";
 import { Link, NavLink } from "react-router-dom";
 import UIlogo from "../../assets/UI_Logo_FINAL.png";
 
-const Menubutton = () => {
+const Menubutton = ({role}) => {
     const [anchorElm, setAnchorElm] = useState(null);
     const [open, setOpen] = useState(false);
 
@@ -37,6 +37,11 @@ const Menubutton = () => {
                 <Done />
             </IconButton>
             <Menu anchorEl={anchorElm} open={open} onClose={handleClose}>
+                {role &&<NavLink style={{ textDecoration: "none" }} to={`/${role}`}>
+                    <MenuItem sx={{ textDecoration: "none", color: "black" }} onClick={handleClose}>
+                        {role}
+                    </MenuItem>
+                </NavLink>}
                 <NavLink style={{ textDecoration: "none" }} to="/">
                     <MenuItem sx={{ textDecoration: "none", color: "black" }} onClick={handleClose}>
                         Home
@@ -52,9 +57,25 @@ const Menubutton = () => {
     );
 };
 
-const HeaderTabs = () => {
+const HeaderTabs = ({role}) => {
+    console.log(role);
+
     return (
+
         <ButtonGroup sx={{ textDecoration: "none", marginRight: 1 }}>
+             {role && <NavLink className="navlink" to={`/${role}`}>
+                <Button
+                    sx={{
+                        border: "0",
+                        color: "black",
+                        fontWeight: 600,
+                        textDecoration: "none",
+                    }}
+                    color="inherit"
+                >
+                    {role}
+                </Button>
+            </NavLink>}
             <NavLink className="navlink" to="/">
                 <Button
                     sx={{
@@ -65,7 +86,7 @@ const HeaderTabs = () => {
                     }}
                     color="inherit"
                 >
-                    Home
+                    {role?"Logout":"Login"}
                 </Button>
             </NavLink>
             <NavLink className="navlink" to="/Feedback">
@@ -89,6 +110,7 @@ const HeaderTabs = () => {
 const Header = () => {
     const theme = useTheme();
     const mobileView = useMediaQuery(theme.breakpoints.down(800));
+    const role= localStorage.getItem("position");
     return (
         <>
             <AppBar
@@ -124,7 +146,7 @@ const Header = () => {
                         </Typography>
                     </Link>
                 </Box>
-                {mobileView ? <Menubutton /> : <HeaderTabs />}
+                {mobileView ? <Menubutton role={role} /> : <HeaderTabs role={role} />}
             </AppBar>
         </>
     );
