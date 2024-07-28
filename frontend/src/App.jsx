@@ -43,7 +43,8 @@ function App() {
         <>
             <BrowserRouter>
                 <Header />
-                { (username && position) ? <AppRoutes /> : <Login /> }
+                <AppRoutes />
+                {/* { (username && position) ? <AppRoutes /> : <Login /> } */}
             </BrowserRouter>
         </>
     );
