@@ -44,7 +44,7 @@ const UploadResourceModal = () => {
   return (
     <div className="container mt-5">
       {/* Upload Button */}
-      <button type="button" className="btn btn-primary" onClick={() => setShowModal(true)}>
+      <button type="button" className="btn btn-primary mt-5 " onClick={() => setShowModal(true)}>
         Upload Resource
       </button>
 

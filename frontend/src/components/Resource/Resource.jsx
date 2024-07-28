@@ -196,15 +196,17 @@ const Resource = () => {
         
       </div>
       <div className="content">
+      
         {selectedSubject ? (
           <div className="resource-content">
-            <h2>{selectedSubject.name}</h2>
+            <h2 style={{textAlign: 'left', paddingLeft:"20px"}}>{selectedSubject.name}</h2>
+            <div className="res-cards">
             {selectedSubject.chapters.map((chapter, index) => (
               <div key={index} className="card">
                 <h3>{chapter.name}</h3>
                 {chapter.content.pdf && (
                   <div>
-                    <h4>PDF</h4>
+                    
                     <a href={chapter.content.pdf} target="_blank" rel="noopener noreferrer">
                       {selectedSubject.name} {chapter.name} PDF
                     </a>
@@ -212,7 +214,7 @@ const Resource = () => {
                 )}
                 {chapter.content.video && (
                   <div>
-                    <h4>Video</h4>
+                    
                     <a href={chapter.content.video} target="_blank" rel="noopener noreferrer">
                       {selectedSubject.name} {chapter.name} Video
                     </a>
@@ -220,14 +222,14 @@ const Resource = () => {
                 )}
                 {chapter.content.ppt && (
                   <div>
-                    <h4>PPT</h4>
+                    
                     <a href={chapter.content.ppt} target="_blank" rel="noopener noreferrer">
                       {selectedSubject.name} {chapter.name} PPT
                     </a>
                   </div>
                 )}
               </div>
-            ))}
+            ))}</div>
           </div>
         ) : (
           <h2>Select a subject to view the chapters</h2>

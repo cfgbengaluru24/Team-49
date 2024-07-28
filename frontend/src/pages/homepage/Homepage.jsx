@@ -1,9 +1,8 @@
-import React from 'react'
+import { Box } from "@mui/material";
+import React from "react";
 
 const Homepage = () => {
-  return (
-    <div>Homepage</div>
-  )
-}
+    return <Box sx={{ marginTop: "5rem" }}>Homepage</Box>;
+};
 
-export default Homepage
+export default Homepage;
