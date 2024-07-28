@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './VolunteerResource.css';
+import AddResource from "../AddResource/AddResource";
 
 const VolunteerResource = () => {
   const [subjects, setSubjects] = useState([]);
@@ -43,59 +44,52 @@ const VolunteerResource = () => {
     return subjects;
   };
 
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    console.log('File selected:', file);
-    // Handle file upload logic here
-  };
-
   return (
     <div className="resource-container">
       <div className="sidebar">
         {subjects.map((subject, index) => (
           <div 
             key={index} 
-            className="subject-item" 
+            className={`subject-item ${selectedSubject === subject ? 'selected' : ''}`}
             onClick={() => setSelectedSubject(subject)}
           >
             {subject.name}
           </div>
         ))}
-
+        <AddResource />
       </div>
       <div className="content">
         {selectedSubject ? (
           <div className="resource-content">
-            <h2>{selectedSubject.name}</h2>
-            {selectedSubject.chapters.map((chapter, index) => (
-              <div key={index} className="card">
-                <h3>{chapter.name}</h3>
-                {chapter.content.pdf && (
-                  <div>
-                    <h4>PDF</h4>
-                    <a href={chapter.content.pdf} target="_blank" rel="noopener noreferrer">
-                      {selectedSubject.name} {chapter.name} PDF
-                    </a>
-                  </div>
-                )}
-                {chapter.content.video && (
-                  <div>
-                    <h4>Video</h4>
-                    <a href={chapter.content.video} target="_blank" rel="noopener noreferrer">
-                      {selectedSubject.name} {chapter.name} Video
-                    </a>
-                  </div>
-                )}
-                {chapter.content.ppt && (
-                  <div>
-                    <h4>PPT</h4>
-                    <a href={chapter.content.ppt} target="_blank" rel="noopener noreferrer">
-                      {selectedSubject.name} {chapter.name} PPT
-                    </a>
-                  </div>
-                )}
-              </div>
-            ))}
+            <h2 style={{ textAlign: 'left', paddingLeft: "20px" }}>{selectedSubject.name}</h2>
+            <div className="res-cards">
+              {selectedSubject.chapters.map((chapter, index) => (
+                <div key={index} className="card">
+                  <h3>{chapter.name}</h3>
+                  {chapter.content.pdf && (
+                    <div>
+                      <a href={chapter.content.pdf} target="_blank" rel="noopener noreferrer">
+                        {selectedSubject.name} {chapter.name} PDF
+                      </a>
+                    </div>
+                  )}
+                  {chapter.content.video && (
+                    <div>
+                      <a href={chapter.content.video} target="_blank" rel="noopener noreferrer">
+                        {selectedSubject.name} {chapter.name} Video
+                      </a>
+                    </div>
+                  )}
+                  {chapter.content.ppt && (
+                    <div>
+                      <a href={chapter.content.ppt} target="_blank" rel="noopener noreferrer">
+                        {selectedSubject.name} {chapter.name} PPT
+                      </a>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         ) : (
           <h2>Select a subject to view the chapters</h2>

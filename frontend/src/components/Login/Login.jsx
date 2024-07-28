@@ -2,11 +2,13 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import './Login.css';
+import {useNavigate} from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('student');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,8 +21,10 @@ const Login = () => {
       // Show an alert message based on role
       if (role === 'student') {
         alert('You are logged in as a student.');
+        navigate('/student');
       } else if (role === 'volunteer') {
         alert('You are logged in as a volunteer.');
+        navigate('/volunteer');
       }
     } catch (error) {
       alert('Login failed. Please check your credentials and try again.');

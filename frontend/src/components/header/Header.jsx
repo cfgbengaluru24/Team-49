@@ -16,6 +16,7 @@ import { Done, Menuicon } from "../../assets/svgvectors";
 import "./Header.css";
 
 import { Link, NavLink } from "react-router-dom";
+import UIlogo from "../../assets/UI_Logo_FINAL.png";
 
 const Menubutton = () => {
     const [anchorElm, setAnchorElm] = useState(null);
@@ -119,7 +120,7 @@ const Header = () => {
                                 fontWeight: 600,
                             }}
                         >
-                            U&I
+                            <img src={UIlogo} alt="UIlogo" style={{height: "50px"}}/>
                         </Typography>
                     </Link>
                 </Box>
