@@ -1,27 +1,16 @@
-import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { Typography, Box, TextField } from "@mui/material";
-
-function createData(date, timeslot, volunteer, subject, topics) {
-    return { date, timeslot, volunteer, subject, topics };
-}
-
-const rows = [
-    createData("29/07/2024", "11:50PM - 12:45PM", "Bob Ross", "Communication skills", "Lession 1: Talking confidently"),
-    createData("29/07/2024", "12:50PM - 01:45PM", "Bob Dylan", "Mathematics", "Lession 4: Algebra"),
-    createData("03/08/2024", "08:00AM - 09:00AM", "Ivy White", "Physical Education", "Lesson 2: Yoga Basics"),
-    createData("03/08/2024", "09:30AM - 10:30AM", "Jack Black", "Music", "Lesson 6: Classical Composers"),
-    createData("04/08/2024", "11:00AM - 12:00PM", "Karen Hill", "Chemistry", "Lesson 7: Organic Chemistry"),
-];
+// StudentProgress.js
+import React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { Typography, Box, TextField } from '@mui/material';
+import rows from '../../assets/student.json'; // Import the JSON file
 
 export default function StudentProgress() {
-
     const [searchQuery, setSearchQuery] = React.useState("");
 
     const handleSearchChange = (event) => {
@@ -31,6 +20,7 @@ export default function StudentProgress() {
     const filteredRows = rows.filter((row) =>
         row.subject.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
     return (
         <Box
             sx={{

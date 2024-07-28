@@ -1,27 +1,14 @@
-import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { Typography, Box, TextField } from "@mui/material";
-
-function createData(date, timeslot, student, subject, topic) {
-    return { date, timeslot, student, subject, topic };
-}
-
-const rows = [
-    createData("29/07/2024", "11:50PM - 12:45PM", "Bob Ross", "Communication skills", "Lesson 1: Talking confidently"),
-    createData("29/07/2024", "12:50PM - 01:45PM", "Bob Dylan", "Mathematics", "Lesson 4: Algebra"),
-    createData("05/08/2024", "03:45PM - 04:45PM", "Nina Scott", "Science", "Lesson 3: Chemistry Basics"),
-    createData("06/08/2024", "10:00AM - 11:00AM", "Oscar Hall", "History", "Lesson 4: Ancient Civilizations"),
-    createData("06/08/2024", "11:15AM - 12:15PM", "Paul Adams", "Literature", "Lesson 6: Poetry Analysis"),
-    createData("07/08/2024", "01:00PM - 02:00PM", "Quinn Baker", "Geography", "Lesson 2: Climate Zones"),
-    createData("07/08/2024", "02:15PM - 03:15PM", "Rachel Carter", "Art", "Lesson 4: Sculpture Techniques"),
-    createData("08/08/2024", "09:00AM - 10:00AM", "Sammy Harris", "Biology", "Lesson 5: Human Anatomy")
-];
+// VolunteerProgress.js
+import React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { Typography, Box, TextField } from '@mui/material';
+import rows from '../../assets/volunteer.json'; // Import the JSON file
 
 export default function VolunteerProgress() {
     const [searchQuery, setSearchQuery] = React.useState("");
@@ -37,10 +24,10 @@ export default function VolunteerProgress() {
     return (
         <Box
             sx={{
-                display: "flex",
-                alignItems: "start",
+                display: 'flex',
+                alignItems: 'start',
                 flexDirection: 'column',
-                gap: 2
+                gap: 2,
             }}
         >
             <Typography variant="h6">Your classes</Typography>
@@ -64,7 +51,7 @@ export default function VolunteerProgress() {
                     </TableHead>
                     <TableBody>
                         {filteredRows.map((row) => (
-                            <TableRow key={row.date} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                            <TableRow key={row.date} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                 <TableCell component="th" scope="row">
                                     {row.date}
                                 </TableCell>
