@@ -36,14 +36,14 @@ const Menubutton = () => {
                 <Done />
             </IconButton>
             <Menu anchorEl={anchorElm} open={open} onClose={handleClose}>
-                <NavLink style={{ textDecoration: "none" }} to="/student">
+                <NavLink style={{ textDecoration: "none" }} to="/">
                     <MenuItem sx={{ textDecoration: "none", color: "black" }} onClick={handleClose}>
-                        Student
+                        Home
                     </MenuItem>
                 </NavLink>
-                <NavLink style={{ textDecoration: "none" }} to="/volunteer">
+                <NavLink style={{ textDecoration: "none" }} to="/feedback">
                     <MenuItem sx={{ textDecoration: "none", color: "black" }} onClick={handleClose}>
-                        Volunteer
+                        Feedback
                     </MenuItem>
                 </NavLink>
             </Menu>
@@ -54,7 +54,7 @@ const Menubutton = () => {
 const HeaderTabs = () => {
     return (
         <ButtonGroup sx={{ textDecoration: "none", marginRight: 1 }}>
-            <NavLink className="navlink" to="/student">
+            <NavLink className="navlink" to="/">
                 <Button
                     sx={{
                         border: "0",
@@ -64,10 +64,10 @@ const HeaderTabs = () => {
                     }}
                     color="inherit"
                 >
-                    Student
+                    Home
                 </Button>
             </NavLink>
-            <NavLink className="navlink" to="/Volunteer">
+            <NavLink className="navlink" to="/Feedback">
                 <Button
                     sx={{
                         border: 0,
@@ -78,7 +78,7 @@ const HeaderTabs = () => {
                     }}
                     color="inherit"
                 >
-                    Volunteer
+                    Feedback
                 </Button>
             </NavLink>
         </ButtonGroup>

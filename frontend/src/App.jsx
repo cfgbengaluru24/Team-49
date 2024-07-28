@@ -1,12 +1,17 @@
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from '../Routes';
 import './App.css';
-import Login from './components/Login/Login';
+import Header from './components/header/Header';
 function App() {
-
-  return (
-    <>
-   <Login></Login>
-    </>
-  )
+    return (
+        <>
+            <BrowserRouter>
+                {/* <ResponsiveAppBar /> */}
+                <Header />
+                <AppRoutes />
+            </BrowserRouter>
+        </>
+    );
 }
 
 export default App;

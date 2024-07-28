@@ -8,20 +8,22 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Typography, Box, TextField } from "@mui/material";
 
-function createData(date, timeslot, volunteer, subject, topics) {
-    return { date, timeslot, volunteer, subject, topics };
+function createData(date, timeslot, student, subject, topic) {
+    return { date, timeslot, student, subject, topic };
 }
 
 const rows = [
-    createData("29/07/2024", "11:50PM - 12:45PM", "Bob Ross", "Communication skills", "Lession 1: Talking confidently"),
-    createData("29/07/2024", "12:50PM - 01:45PM", "Bob Dylan", "Mathematics", "Lession 4: Algebra"),
-    createData("03/08/2024", "08:00AM - 09:00AM", "Ivy White", "Physical Education", "Lesson 2: Yoga Basics"),
-    createData("03/08/2024", "09:30AM - 10:30AM", "Jack Black", "Music", "Lesson 6: Classical Composers"),
-    createData("04/08/2024", "11:00AM - 12:00PM", "Karen Hill", "Chemistry", "Lesson 7: Organic Chemistry"),
+    createData("29/07/2024", "11:50PM - 12:45PM", "Bob Ross", "Communication skills", "Lesson 1: Talking confidently"),
+    createData("29/07/2024", "12:50PM - 01:45PM", "Bob Dylan", "Mathematics", "Lesson 4: Algebra"),
+    createData("05/08/2024", "03:45PM - 04:45PM", "Nina Scott", "Science", "Lesson 3: Chemistry Basics"),
+    createData("06/08/2024", "10:00AM - 11:00AM", "Oscar Hall", "History", "Lesson 4: Ancient Civilizations"),
+    createData("06/08/2024", "11:15AM - 12:15PM", "Paul Adams", "Literature", "Lesson 6: Poetry Analysis"),
+    createData("07/08/2024", "01:00PM - 02:00PM", "Quinn Baker", "Geography", "Lesson 2: Climate Zones"),
+    createData("07/08/2024", "02:15PM - 03:15PM", "Rachel Carter", "Art", "Lesson 4: Sculpture Techniques"),
+    createData("08/08/2024", "09:00AM - 10:00AM", "Sammy Harris", "Biology", "Lesson 5: Human Anatomy")
 ];
 
-export default function StudentProgress() {
-
+export default function VolunteerProgress() {
     const [searchQuery, setSearchQuery] = React.useState("");
 
     const handleSearchChange = (event) => {
@@ -31,16 +33,17 @@ export default function StudentProgress() {
     const filteredRows = rows.filter((row) =>
         row.subject.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
     return (
         <Box
             sx={{
                 display: "flex",
                 alignItems: "start",
                 flexDirection: 'column',
-                gap: 1
+                gap: 2
             }}
         >
-            <Typography variant="h6">Your progress</Typography>
+            <Typography variant="h6">Your classes</Typography>
             <TextField
                 label="Search by subject"
                 variant="outlined"
@@ -54,7 +57,7 @@ export default function StudentProgress() {
                         <TableRow>
                             <TableCell>Date</TableCell>
                             <TableCell align="right">Time slot</TableCell>
-                            <TableCell align="right">Volunteer</TableCell>
+                            <TableCell align="right">Student</TableCell>
                             <TableCell align="right">Subject</TableCell>
                             <TableCell align="right">Topics covered</TableCell>
                         </TableRow>
@@ -66,9 +69,9 @@ export default function StudentProgress() {
                                     {row.date}
                                 </TableCell>
                                 <TableCell align="right">{row.timeslot}</TableCell>
-                                <TableCell align="right">{row.volunteer}</TableCell>
+                                <TableCell align="right">{row.student}</TableCell>
                                 <TableCell align="right">{row.subject}</TableCell>
-                                <TableCell align="right">{row.topics}</TableCell>
+                                <TableCell align="right">{row.topic}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
