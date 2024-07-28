@@ -1,6 +1,6 @@
-import Student from '../Models/StudentModel';
-import Volunteer from '../Models/VolunteerModel';
-import { StudentFeedback, VolunteerFeedback, CoordinatorFeedback } from '../Models/FeedbackModels';
+const Student = require('../Models/StudentModel');
+const Volunteer = require('../Models/VolunteerModel');
+const { StudentFeedback, VolunteerFeedback, CoordinatorFeedback } = require('../Models/FeedbackModels');
 
 const listStudentUsernames = async (req, res) => {
     try {

@@ -20,9 +20,11 @@ const Login = () => {
       localStorage.setItem('user', JSON.stringify(user));
       // Show an alert message based on role
       if (role === 'student') {
+        localStorage.setItem('position', 'student');
         alert('You are logged in as a student.');
         navigate('/student');
       } else if (role === 'volunteer') {
+        localStorage.setItem('position', 'volunteer');
         alert('You are logged in as a volunteer.');
         navigate('/volunteer');
       }
