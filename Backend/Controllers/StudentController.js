@@ -3,13 +3,12 @@ const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const Student = require('../Models/StudentModel');
 
-// Signup function remains the same
 const signup = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, age, class: studentClass, preferedtime, languagePreference, learningMethodPreference } = req.body;
 
-    if (!username || !email || !password) {
-      return res.status(400).json({ error: 'Username, email, and password are required' });
+    if (!username || !email || !password || !studentClass || !preferedtime || !languagePreference || !learningMethodPreference) {
+      return res.status(400).json({ error: 'All required fields must be provided' });
     }
 
     if (!validator.isEmail(email)) {
@@ -30,7 +29,12 @@ const signup = async (req, res) => {
     const newStudent = new Student({
       username,
       email,
-      password: hashedPassword
+      password: hashedPassword,
+      age,
+      class: studentClass,
+      preferedtime,
+      languagePreference,
+      learningMethodPreference
     });
 
     await newStudent.save();
@@ -42,54 +46,4 @@ const signup = async (req, res) => {
   }
 };
 
-// Login function with JWT
-const login = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    if (!email || !password) {
-      return res.status(400).json({ error: 'Email and password are required' });
-    }
-
-    if (!validator.isEmail(email)) {
-      return res.status(400).json({ error: 'Invalid email format' });
-    }
-
-    const student = await Student.findOne({ email });
-    if (!student) {
-      return res.status(401).json({ error: 'Invalid email or password' });
-    }
-
-    const isMatch = await bcrypt.compare(password, student.password);
-    if (!isMatch) {
-      return res.status(401).json({ error: 'Invalid email or password' });
-    }
-
-    // Generate JWT token
-    const token = jwt.sign(
-      { id: student._id },
-      process.env.JWT_SECRET,
-      { expiresIn: '1h' }
-    );
-
-    // Send response with token and student details
-    res.status(200).json({
-      message: 'Login successful',
-      token,
-      student: {
-        id: student._id,
-        username: student.username,
-        email: student.email,
-        // Include any other details you want to send
-      }
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-};
-
-module.exports = {
-  signup,
-  login
-};
+module.exports = { signup };

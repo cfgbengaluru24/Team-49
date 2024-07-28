@@ -1,11 +1,10 @@
-
 import './App.css';
-import Resource from './components/Resource/Resource';
+import Login from './components/Login/Login';
 function App() {
 
   return (
     <>
-   <Resource></Resource>
+   <Login></Login>
     </>
   )
 }
