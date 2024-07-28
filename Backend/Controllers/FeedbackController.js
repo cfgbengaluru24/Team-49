@@ -1,6 +1,6 @@
-import Student from '../Models/StudentModel';
-import Volunteer from '../Models/VolunteerModel';
-import { StudentFeedback, VolunteerFeedback, CoordinatorFeedback } from '../Models/FeedbackModels';
+const { CoordinatorFeedback, StudentFeedback, VolunteerFeedback } = require('../Models/FeedbackModels');
+const Student=require( '../Models/StudentModel');
+const Volunteer=require('../Models/VolunteerModel');
 
 const listStudentUsernames = async (req, res) => {
     try {
@@ -71,10 +71,25 @@ const saveCoordinatorFeedback = (req, res) => {
   });
 };
 
+
+
+const getFeedbacks = async (req, res) => {
+  try {
+    const studentFeedbacks = await StudentFeedback.find().populate('from_username').populate('to_username');
+    const volunteerFeedbacks = await VolunteerFeedback.find().populate('from_username').populate('to_username');
+    const coordinatorFeedbacks = await CoordinatorFeedback.find().populate('from_username').populate('to_username');
+    res.json({ studentFeedbacks, volunteerFeedbacks, coordinatorFeedbacks });
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error', error });
+  }
+};
+
+
 module.exports = {
   saveStudentFeedback,
   saveVolunteerFeedback,
   saveCoordinatorFeedback,
   listStudentUsernames,
-  listVolunteerUsernames
+  listVolunteerUsernames,
+  getFeedbacks
 };

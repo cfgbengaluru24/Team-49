@@ -1,17 +1,23 @@
-import { BrowserRouter } from "react-router-dom";
-import AppRoutes from '../Routes';
-import './App.css';
-import Header from './components/header/Header';
-function App() {
-    return (
-        <>
-            <BrowserRouter>
-                {/* <ResponsiveAppBar /> */}
-                <Header />
-                <AppRoutes />
-            </BrowserRouter>
-        </>
-    );
+// import './App.css';
+// import VolunteerDetails from "./pages/volunteerdetails/VolunteerDetails";
+// function App() {
+//     return (
+//         <>
+//             <VolunteerDetails/>
+//         </>
+//     );
+// }
+
+// export default App;
+import React from 'react'
+import CoordinatorDetails from './components/Feedback/CoordinatorDetails'
+
+const App = () => {
+  return (
+    <div>
+    <CoordinatorDetails/>
+    </div>
+  )
 }
 
-export default App;
+export default App
